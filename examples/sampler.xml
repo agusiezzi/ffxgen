@@ -1,0 +1,79 @@
+<!--
+  FFX Sampler - one control per type/attribute variant, for building the
+  pseudo effect creator. Every control differs from its neighbour by exactly
+  one attribute so the binary diff is unambiguous.
+
+  Install: paste before </Effects> in PresetEffects.xml, relaunch AE, run
+  Add_FFX_Sampler.jsx on any layer, select ONLY the effect in the timeline,
+  Animation > Save Animation Preset... > "FFX_Sampler.ffx".
+  Do not change any values before saving.
+-->
+<Effect matchname="Pseudo/iezno Sampler" name="FFX Sampler">
+
+	<!-- Angle: default only -->
+	<Angle name="Angle Plain" default="45"/>
+	<Angle name="Angle Hold" hold="true" default="90"/>
+	<Angle name="Angle NoTimeVary" CANNOT_TIME_VARY="true" default="135"/>
+
+	<!-- Color -->
+	<Color name="Color Plain" default_red="255" default_green="128" default_blue="0"/>
+	<Color name="Color NoTimeVary" CANNOT_TIME_VARY="true" default_red="0" default_green="64" default_blue="255"/>
+
+	<!-- Point (2D), defaults are fractions of the layer -->
+	<Point name="Point Default"/>
+	<Point name="Point Custom" default_x="0.25" default_y="0.75"/>
+	<Point name="Point Hidden" default_x="0.1" default_y="0.9" INVISIBLE="true"/>
+	<Point name="Point NoTimeVary" CANNOT_TIME_VARY="true" default_x="0.5" default_y="0.5"/>
+
+	<!-- Point3D -->
+	<Point3D name="Point3D Default"/>
+	<Point3D name="Point3D Custom" default_x="0.2" default_y="0.4" default_z="0.6"/>
+	<Point3D name="Point3D Hidden" default_x="0.3" default_y="0.3" default_z="0.3" INVISIBLE="true"/>
+
+	<!-- Layer: default_self both ways -->
+	<Layer name="Layer SelfTrue" default_self="true"/>
+	<Layer name="Layer SelfFalse" default_self="false"/>
+
+	<!-- Checkbox -->
+	<Checkbox name="Check Off" default="false"/>
+	<Checkbox name="Check On" default="true"/>
+	<Checkbox name="Check Hold" hold="true" default="true"/>
+	<Checkbox name="Check NoTimeVary" CANNOT_TIME_VARY="true" default="false"/>
+
+	<!-- Popup -->
+	<Popup name="Popup Two" default="1" popup_string="Alpha|Beta"/>
+	<Popup name="Popup Six" default="4" popup_string="One|Two|Three|Four|Five|Six"/>
+	<Popup name="Popup Hold" hold="true" default="2" popup_string="Red|Green|Blue"/>
+	<Popup name="Popup NoTimeVary" CANNOT_TIME_VARY="true" default="3" popup_string="X|Y|Z"/>
+	<Popup name="Popup Separator" default="1" popup_string="First|(-|Second"/>
+
+	<!-- Slider: each one isolates an attribute -->
+	<Slider name="Slider Base"       default="0"    valid_min="-1000000" valid_max="1000000" slider_min="0"    slider_max="100"  precision="2"/>
+	<Slider name="Slider Default"    default="42.5" valid_min="-1000000" valid_max="1000000" slider_min="0"    slider_max="100"  precision="2"/>
+	<Slider name="Slider ValidRange" default="0"    valid_min="-500"     valid_max="500"     slider_min="0"    slider_max="100"  precision="2"/>
+	<Slider name="Slider SliderRange" default="0"   valid_min="-1000000" valid_max="1000000" slider_min="-50"  slider_max="250"  precision="2"/>
+	<Slider name="Slider Precision0" default="0"    valid_min="-1000000" valid_max="1000000" slider_min="0"    slider_max="100"  precision="0"/>
+	<Slider name="Slider Precision4" default="0"    valid_min="-1000000" valid_max="1000000" slider_min="0"    slider_max="100"  precision="4"/>
+	<Slider name="Slider Percent"    default="0"    valid_min="-1000000" valid_max="1000000" slider_min="0"    slider_max="100"  precision="2" DISPLAY_PERCENT="true"/>
+	<Slider name="Slider Pixel"      default="0"    valid_min="-1000000" valid_max="1000000" slider_min="0"    slider_max="100"  precision="2" DISPLAY_PIXEL="true"/>
+	<Slider name="Slider Hidden"     default="0"    valid_min="-1000000" valid_max="1000000" slider_min="0"    slider_max="100"  precision="2" INVISIBLE="true"/>
+	<Slider name="Slider NoTimeVary" default="0"    valid_min="-1000000" valid_max="1000000" slider_min="0"    slider_max="100"  precision="2" CANNOT_TIME_VARY="true"/>
+	<Slider name="Slider NoSliderRange" default="0" valid_min="-1000000" valid_max="1000000" precision="2"/>
+	<Slider name="Slider Precision1Default" default="0" valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100"/>
+
+	<!-- Groups -->
+	<Group name="Group Plain">
+		<Slider name="In Group" default="1" valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2"/>
+	</Group>
+	<Group name="Group Nested">
+		<Group name="Group Inner">
+			<Slider name="In Inner" default="2" valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2"/>
+		</Group>
+	</Group>
+	<Group name="Group Hidden" INVISIBLE="true">
+		<Slider name="In Hidden" default="3" valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2"/>
+	</Group>
+	<Group name="Group Empty"></Group>
+	<Slider name="After Groups" default="4" valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2"/>
+
+</Effect>

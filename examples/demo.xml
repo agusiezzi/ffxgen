@@ -1,0 +1,15 @@
+<Effect matchname="Pseudo/iezno Demo" name="FFX Gen Demo">
+	<Layer name="Target"/>
+	<Popup name="Mode" default="2" popup_string="Fast|Normal|Slow"/>
+	<Group name="Look">
+		<Color name="Tint" default_red="40" default_green="200" default_blue="120"/>
+		<Angle name="Rotation" default="30"/>
+		<Slider name="Amount" default="50" valid_min="0" valid_max="100" slider_min="0" slider_max="100" precision="1" DISPLAY_PERCENT="true"/>
+		<Checkbox name="Enabled" default="true"/>
+	</Group>
+	<Point name="Anchor" default_x="0.5" default_y="0.5"/>
+	<Point3D name="Anchor 3D" default_x="0.5" default_y="0.5" default_z="0"/>
+	<Group name="Hidden Math" INVISIBLE="true">
+		<Slider name="Internal" default="7" valid_min="-1000000" valid_max="1000000" precision="2"/>
+	</Group>
+</Effect>

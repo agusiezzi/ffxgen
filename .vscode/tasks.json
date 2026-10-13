@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "ffxgen: run round-trip tests", "type": "shell",
+      "command": "python3 tests/test_roundtrip.py",
+      "group": { "kind": "test", "isDefault": true }, "problemMatcher": [] },
+    { "label": "ffxgen: build current XML", "type": "shell",
+      "command": "python3 ffxgen.py ${file} dist/${fileBasenameNoExtension}.ffx",
+      "group": { "kind": "build", "isDefault": true }, "problemMatcher": [] }
+  ]
+}

@@ -1,0 +1,69 @@
+<!--
+  2D Text Box pseudo effect
+  Syntax and conventions matched to Adobe's own entries in PresetEffects.xml.
+
+  Mac:  Adobe After Effects 2026.app/Contents/Frameworks/aelib.framework/Versions/A/Resources/xml/PresetEffects.xml
+  Win:  C:\Program Files\Adobe\Adobe After Effects 2026\Support Files\PresetEffects.xml
+
+  Quit AE, back up the file, paste this block BEFORE the final </Effects> tag,
+  save, relaunch AE. Change "YOURNAME" to your own prefix.
+
+  Conventions borrowed from Adobe:
+    - hold="true" on popups/checkboxes -> hold keyframes, no interpolation
+    - DISPLAY_PERCENT="true" -> shows a % sign on percentage sliders
+    - valid_min/max of +-1000000 -> no hard clamp, slider_min/max only sets the drag range
+    - empty <Group></Group> -> a divider line, no twirl-down (Adobe's Counter panels)
+    - INVISIBLE="true" -> hidden from Effect Controls but still readable by expressions
+      and settable by script (Adobe's Face Track Points)
+  Popup values are 1-based in expressions, matching the script's CONFIG numbering.
+-->
+<Effect matchname="Pseudo/YOURNAME TextBox" name="2D Text Box">
+
+	<Layer name="Text Layer" default_self="false"/>
+	<Popup name="Measure Text" hold="true" default="2" popup_string="At Single Time|During Whole Comp|After Time|Before Time" />
+	<Slider name="Measure At Time [sec]" default="0" valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2" />
+
+	<Group name="Padding">
+		<Slider name="Padding Overall" default="35" valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2" />
+		<Slider name="Padding Left"    default="0"  valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2" />
+		<Slider name="Padding Top"     default="0"  valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2" />
+		<Slider name="Padding Right"   default="0"  valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2" />
+		<Slider name="Padding Bottom"  default="0"  valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2" />
+	</Group>
+
+	<Group name="Round Corners">
+		<Slider name="Top Left Radius"     default="20" valid_min="0" valid_max="1000000" slider_min="0" slider_max="100" precision="2" />
+		<Slider name="Top Right Radius"    default="20" valid_min="0" valid_max="1000000" slider_min="0" slider_max="100" precision="2" />
+		<Slider name="Bottom Right Radius" default="20" valid_min="0" valid_max="1000000" slider_min="0" slider_max="100" precision="2" />
+		<Slider name="Bottom Left Radius"  default="20" valid_min="0" valid_max="1000000" slider_min="0" slider_max="100" precision="2" />
+		<Group name="Shape">
+			<Checkbox name="Scale Roundness" hold="true" default="false" />
+			<Slider name="Corner Sharpness" default="0" valid_min="0" valid_max="100" slider_min="0" slider_max="100" precision="2" DISPLAY_PERCENT="true" />
+		</Group>
+	</Group>
+
+	<Group name="Scaling">
+		<Checkbox name="Uniform Scale" hold="true" default="true" />
+		<Slider name="Scale X" default="100" valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2" DISPLAY_PERCENT="true" />
+		<Slider name="Scale Y" default="100" valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2" DISPLAY_PERCENT="true" />
+		<Popup name="Scale Origin" hold="true" default="1" popup_string="Center|Upper Left|Upper Right|Lower Right|Lower Left" />
+	</Group>
+
+	<Group name="Offset">
+		<Slider name="Offset X" default="0" valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2" />
+		<Slider name="Offset Y" default="0" valid_min="-1000000" valid_max="1000000" slider_min="0" slider_max="100" precision="2" />
+	</Group>
+
+	<!-- Divider-style section, Adobe Counter-panel style: no twirl-down -->
+	<Group name="Advanced"></Group>
+	<Slider name="Minimum Width" default="0"   valid_min="0" valid_max="1000000" slider_min="0"   slider_max="1000" precision="0" />
+	<Slider name="Cap Ratio"     default="0.5" valid_min="0" valid_max="2"       slider_min="0.3" slider_max="1"    precision="2" />
+
+	<!-- Hidden. Set by the script at apply time (expressions can't detect
+	     paragraph vs point text), read by the expression instead of a baked CFG.boxText.
+	     Lets every box share one identical expression. -->
+	<Group name="Internal" INVISIBLE="true">
+		<Checkbox name="Box Text" hold="true" default="false" INVISIBLE="true" />
+	</Group>
+
+</Effect>
